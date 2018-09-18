@@ -7,7 +7,7 @@
 </template>
 
 <script>
-
+import { bus } from '../main';
 
 
 export default {
@@ -28,7 +28,9 @@ export default {
   },
   methods: {
     changeTitle: function() {
-      this.$emit('changeTitle', 'Vue Wizards')
+      //this.$emit('changeTitle', 'Vue Wizards');
+      this.title = 'Vue Wizards 2';
+      bus.$emit('titleChanged', 'Vue Wizards 2');
     }
   }
 }
