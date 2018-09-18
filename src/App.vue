@@ -1,41 +1,30 @@
 <template>
   <div>
-    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
-    <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
+    
+    <formHelper>
+      <h2 slot="title">{{ title }}</h2>
+      <p slot="text">I am the paragraph text for the slot</p>
+    </formHelper>
 
   </div>
 </template>
 
 <script>
-
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Ninjas from './components/Ninjas.vue'
+import formHelper from './components/formHelper.vue'
 
 export default {
   components: {
-    'app-header': Header,
-    'app-footer': Footer,
-    'app-ninjas': Ninjas
-  },
+    formHelper: formHelper
+},
   data() {
     return {
-      ninjas: [
-            {name: 'Maja', specialty: 'Ninja', show: 'false'},
-            {name: 'Dragan', specialty: 'Fat', show: 'false'},
-            {name: 'Jovana', specialty: 'Pretty', show: 'false'},
-            {name: 'Milan', specialty: 'Smart', show: 'false'},
-            {name: 'Mia', specialty: 'Elegant', show: 'false'},
-        ],
-
-      title: 'Vue Ninjas'
+      // if we're gonna add content dynamicaly the content MUST be defined in the component
+      // where the slots are called. In this example it's here
+      title: 'I am a dynamic slot title'
     }
   },
   methods: {
-    updateTitle: function(updatedTitle) {
-      this.title = updatedTitle;
-    }
+    
   }
 }
 </script>
