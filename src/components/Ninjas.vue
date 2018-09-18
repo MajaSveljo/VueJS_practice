@@ -33,6 +33,38 @@ export default {
       deleteNinja: function() {
           this.ninjas.pop();
       }
+  },
+  // lifecycle hooks
+
+  beforeCreate(){
+      alert('beforeCreate');
+  },
+
+  //created is good for fetchig data from database
+  //mounted is also good for that, but created should be better
+  created(){
+      alert('created');
+  },
+  beforeMount(){
+      alert('beforeMount');
+  },
+
+  //mounted is a good place for manipulating the DOM once it has been mounted
+  mounted(){
+      alert('mounted');
+  },
+
+  //if Vue detects a change in this component (exp. in data)
+  //it will run this hook - before the change is updated in the DOM
+  beforeUpdate(){
+      alert('beforeUpdate');
+  },
+
+  //updated reacurs after the DOM has been updated and is being re-rendered
+  //that means the update can be acessed in the DOM and that updated is good for manipulating
+  //updated DOM
+  updated(){
+      alert('updated');
   }
 }
 </script>
