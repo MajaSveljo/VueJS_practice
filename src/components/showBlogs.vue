@@ -1,10 +1,12 @@
 <template>
-  <div id="show-blogs">
+<!-- since we want to pass a string and not a variable we need to put single
+quotatins inside the double ones -->
+  <div v-theme:column="'narrow'" id="show-blogs">
     
     <h1>All Blog Articles</h1>
 
     <div v-for="blog in blogs" class="single-blog">
-        <h2>{{ blog.title }}</h2>
+        <h2 v-rainbow>{{ blog.title }}</h2>
         <article>{{ blog.body }}</article>
     </div>
 
@@ -38,9 +40,16 @@ export default {
 
 <style >
 
-body{
-  margin: 0;
-  font-family: Arial;
+#show-blogs{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.single-blog{
+    padding: 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
+    background: #eee;
 }
 
 </style>
