@@ -1,16 +1,14 @@
 <template>
 <!-- since we want to pass a string and not a variable we need to put single
 quotatins inside the double ones -->
-  <div id="show-blogs">
+  <div v-theme:column="'narrow'" id="show-blogs">
     
     <h1>All Blog Articles</h1>
 
     <input type="text" v-model="search" placeholder="search blogs" />
-    <!-- we create a custom search filret by using computed and not filteres!! -->
+
     <div v-for="blog in filteredBlogs" class="single-blog">
-    <!-- for filter to be used the pipe symobl (|) must be used
-    after the | comes the filter's name -->
-        <h2>{{ blog.title | to-uppercase}}</h2>
+        <h2 v-rainbow>{{ blog.title | to-uppercase}}</h2>
         <article>{{ blog.body | snippet}}</article>
     </div>
 
@@ -47,7 +45,24 @@ export default {
               return blog.title.match(this.search);
           })
       }
-  }
+    },
+    filters: {
+        //navodnici jer je ovo ime filtera
+        'to-uppercase': function(value){
+            return value.toUpperCase();
+        }
+        //drugačija sintaksa bi bila:
+        // toUppercase(value){
+        //     return value.toUpperCase();
+        // }
+    },
+    directives: {
+        'rainbow': {
+            bind(el, binding, vnode){
+            el.style.color = "#" + Math.random().toString().slice(2,8)
+            }
+        }
+    }
 }
 </script>
 
