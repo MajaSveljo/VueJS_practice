@@ -1,8 +1,8 @@
 <template>
   <div>
-    
-    <show-blogs></show-blogs>
-    <list-blogs></list-blogs>
+
+    <!-- this says where we want our components to load in when we visit those routes -->
+    <router-view></router-view>
 
   </div>
 </template>
