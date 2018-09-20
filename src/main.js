@@ -21,10 +21,13 @@ Vue.use(VueRouter);
 //we're going to create a new file for them to keep the routes organized
 const router = new VueRouter({
   //routes is a property here
-  routes: Routes
+  routes: Routes,
   //by saying this we said routes = Routes
   //and we have registered them
   //only one more step, put it in the Vue instance
+  mode: 'history'
+  //two modes history and hash. hash is the default mode behaviour.
+  //hash leaves # in the links. when we set it to history the "#" disapperas
 });
 
 //filters
