@@ -1,13 +1,15 @@
 <template>
 <!-- since we want to pass a string and not a variable we need to put single
 quotatins inside the double ones -->
-  <div v-theme:column="'narrow'" id="show-blogs">
+  <div id="show-blogs">
     
     <h1>All Blog Articles</h1>
 
     <div v-for="blog in blogs" class="single-blog">
-        <h2 v-rainbow>{{ blog.title }}</h2>
-        <article>{{ blog.body }}</article>
+    <!-- for filter to be used the pipe symobl (|) must be used
+    after the | comes the filter's name -->
+        <h2>{{ blog.title | to-uppercase}}</h2>
+        <article>{{ blog.body | snippet}}</article>
     </div>
 
   </div>
