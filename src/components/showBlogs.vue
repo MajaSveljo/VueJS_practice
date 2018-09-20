@@ -5,7 +5,9 @@ quotatins inside the double ones -->
     
     <h1>All Blog Articles</h1>
 
-    <div v-for="blog in blogs" class="single-blog">
+    <input type="text" v-model="search" placeholder="search blogs" />
+    <!-- we create a custom search filret by using computed and not filteres!! -->
+    <div v-for="blog in filteredBlogs" class="single-blog">
     <!-- for filter to be used the pipe symobl (|) must be used
     after the | comes the filter's name -->
         <h2>{{ blog.title | to-uppercase}}</h2>
@@ -25,7 +27,8 @@ export default {
 },
   data() {
     return {
-        blogs: []
+        blogs: [],
+        search: ''
     }
   },
   methods: {
@@ -36,6 +39,14 @@ export default {
       .then(function(data){
           this.blogs = data.body.slice(0,10);
       })
+  },
+  computed: {
+      filteredBlogs: function(){
+          return this.blogs.filter((blog) => {
+              //if we return true, blog stays in the array
+              return blog.title.match(this.search);
+          })
+      }
   }
 }
 </script>
